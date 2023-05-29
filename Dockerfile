@@ -11,6 +11,6 @@ RUN mkdir -p /opt/kafka/plugins/debezium-connector-postgres/
 # Connector plugin debezium-connector-mysql
 RUN curl -O https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/${DEBEZIUM_CONNECTOR_VERSION}.Final/debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz
 RUN tar -xvfz debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz -C /opt/kafka/plugins/debezium-connector-postgres/
-RUN rm -vf /opt/kafka/plugins/debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz
+RUN rm -vf /opt/kafka/plugins/debezium-connector-postgres/debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz
 
 USER 1001
