@@ -6,7 +6,7 @@ ARG DEBEZIUM_CONNECTOR_VERSION=1.9.7
 USER root:root
 # Create the target directory
 RUN mkdir -p /opt/kafka/plugins
-RUN curl -O https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/${DEBEZIUM_CONNECTOR_VERSION}.Final/debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz
-RUN tar -xzf debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz -C /opt/kafka/plugins
-RUN rm -vf /opt/kafka/plugins/debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz
+RUN curl -O https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/${DEBEZIUM_CONNECTOR_VERSION}.Final/debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz && \
+    tar -xzf debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz -C /opt/kafka/plugins && \
+    rm -vf /opt/kafka/plugins/debezium-connector-postgres-${DEBEZIUM_CONNECTOR_VERSION}.Final-plugin.tar.gz
 USER 1001
