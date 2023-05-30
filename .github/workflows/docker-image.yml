@@ -14,5 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    # - name: Build the Docker image
+    #   run: docker build . --file Dockerfile --tag strimzi-kafka-connect:$(date +%s)
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag strimzi-kafka-connect:$(date +%s)
+      run: docker build . --file Dockerfile.sink --tag kafka-connect-sink:$(date +%s)
