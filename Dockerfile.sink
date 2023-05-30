@@ -5,4 +5,4 @@ RUN confluent-hub install --no-prompt confluentinc/kafka-connect-jdbc:latest
 RUN ls /usr/share/confluent-hub-components/confluentinc-kafka-connect-jdbc/lib/
 
 RUN env
-
+RUN ls -al /
