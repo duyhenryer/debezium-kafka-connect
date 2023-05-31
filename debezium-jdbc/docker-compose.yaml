@@ -37,9 +37,9 @@ services:
      - POSTGRES_PASSWORD=postgrespw
      - POSTGRES_DB=inventory
   connect:
-    image: debezium/connect-jdbc-es:${DEBEZIUM_VERSION}
+    image: debezium/connect-jdbc:${DEBEZIUM_VERSION}
     build:
-      context: debezium-jdbc-es
+      context: debezium-jdbc
       args:
         DEBEZIUM_VERSION: ${DEBEZIUM_VERSION}
     ports:
