@@ -62,26 +62,8 @@ docker compose -f docker-compose.yaml up --build
 # Start PostgreSQL connector
 curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ -d @jdbc-sink.json
 
-HTTP/1.1 201 Created
-Date: Tue, 30 May 2023 10:50:22 GMT
-Location: http://localhost:8083/connectors/jdbc-sink
-Content-Type: application/json
-Content-Length: 521
-Server: Jetty(9.4.48.v20220622)
-
-{"name":"jdbc-sink","config":{"connector.class":"io.confluent.connect.jdbc.JdbcSinkConnector","tasks.max":"1","topics":"customers","connection.url":"jdbc:postgresql://postgres:5432/inventory?user=postgresuser&password=postgrespw","transforms":"unwrap","transforms.unwrap.type":"io.debezium.transforms.ExtractNewRecordState","transforms.unwrap.drop.tombstones":"false","auto.create":"true","insert.mode":"upsert","delete.enabled":"true","pk.fields":"id","pk.mode":"record_key","name":"jdbc-sink"},"tasks":[],"type":"sink"}
-
 # Start MySQL connector
 curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ -d @source.json
-
-HTTP/1.1 201 Created
-Date: Tue, 30 May 2023 10:50:29 GMT
-Location: http://localhost:8083/connectors/inventory-connector
-Content-Type: application/json
-Content-Length: 687
-Server: Jetty(9.4.48.v20220622)
-
-{"name":"inventory-connector","config":{"connector.class":"io.debezium.connector.mysql.MySqlConnector","tasks.max":"1","topic.prefix":"dbserver1","database.hostname":"mysql","database.port":"3306","database.user":"debezium","database.password":"dbz","database.server.id":"184054","database.include.list":"inventory","schema.history.internal.kafka.bootstrap.servers":"kafka:9092","schema.history.internal.kafka.topic":"schema-changes.inventory","transforms":"route","transforms.route.type":"org.apache.kafka.connect.transforms.RegexRouter","transforms.route.regex":"([^.]+)\\.([^.]+)\\.([^.]+)","transforms.route.replacement":"$3","name":"inventory-connector"},"tasks":[],"type":"source"}
 ```
 
 Check contents of the MySQL database:
